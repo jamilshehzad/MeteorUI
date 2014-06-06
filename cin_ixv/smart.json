@@ -1,0 +1,9 @@
+{
+  "packages": {
+    "iron-router": {},
+    "font-awesome": {},
+    "bootstrap3-datepicker": {},
+    "bootstrap3-less": {},
+    "moment": {}
+  }
+}

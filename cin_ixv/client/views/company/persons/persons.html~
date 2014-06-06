@@ -1,0 +1,162 @@
+<template name="CompanyPersons">
+	{{#if listMode}} 
+		{{> CompanyPersonsView}} 
+	{{/if}}
+
+	{{#if insertMode}} 
+		{{> CompanyPersonsForm}}
+	{{/if}}
+</template>
+
+<template name="CompanyPersonsView">
+	<div id="dataview">
+		<h2 id="page_title">Employees</h2>
+		<form id="dataview-controls" class="form-inline">
+			{{#if isAdmin}}
+			<div id="dataview-controls-insert" class="form-group">
+				<button type="submit" id="dataview-insert-button" class="btn btn-success">
+					<span class="fa fa-plus">
+					</span>
+					Add new
+				</button>
+			</div>
+			{{/if}}
+			<div id="dataview-controls-search" class="form-group">
+				<label class="sr-only" for="search">
+					Search
+				</label>
+				<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="" autofocus>
+				<button type="button" id="dataview-search-button" class="btn btn-default">
+					<span class="fa fa-search">
+					</span>
+				</button>
+			</div>
+		</form>
+		<div id="dataview-data">
+			{{> CompanyPersonsViewData}}
+		</div>
+	</div>
+</template>
+
+<template name="CompanyPersonsViewData">
+	<table id="dataview-table" class="table table-hover">
+		<thead id="dataview-data-header">
+			{{> CompanyPersonsViewDataHeader}}
+		</thead>
+		<tbody id="dataview-data-items">
+			{{#each companyPersons}} {{> CompanyPersonsViewDataItems}} {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="CompanyPersonsViewDataHeader">
+	<tr id="dataview-data-header-row">
+		<th>
+			Person Name
+		</th>
+		<th>
+			Address
+		</th>
+		<th>
+			Function
+		</th>
+		<th>
+			Since
+		</th>
+		<th>
+			Left
+		</th>
+		<th>
+			Status
+		</th>
+		<th>
+			&nbsp;
+		</th>
+	</tr>
+</template>
+
+<template name="CompanyPersonsViewDataItems">
+	<tr id="dataview-data-items-row">
+		<td>
+			{{name}}
+		</td>
+		<td>
+			{{address}}
+		</td>
+		<td>
+			{{function}}
+		</td>
+		<td>
+			{{since}}
+		</td>
+		<td>
+			{{left}}
+		</td>
+		<td>
+			{{status}}
+		</td>
+		<td class="td-icon">
+			{{#if isAdmin}}
+				<span class="fa fa-trash-o delete-button" title="Delete"></span>
+			{{/if}}
+		</td>
+	</tr>
+</template>
+
+<template name="CompanyPersonsForm">
+	<div class="row">
+		<div class="col-md-6">
+			<h2 id="page_title">Add Employee</h2>
+			<form id="form" role="form">
+				<div class="form-group">
+					<label for="name" class="control-label">
+						Person
+					</label>
+					<select name="personId" class="form-control" autofocus>
+						{{#each personList}}
+							<option value="{{_id}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="function" class="control-label">
+						Function
+					</label>
+					<input type="text" name="function" value="" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="since" class="control-label">
+						Since
+					</label>
+					<div class="input-group">
+						<input type="text" name="since" value="" class="form-control datepicker" required>
+						<span class="input-group-btn">
+							<button class="btn btn-default datepicker-button" type="button"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="left" class="control-label">
+						Left
+					</label>
+					<div class="input-group">
+						<input type="text" name="left" value="" class="form-control datepicker">
+						<span class="input-group-btn">
+							<button class="btn btn-default datepicker-button" type="button"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<button class="btn btn-default" type="button" id="form-button-cancel">
+						Cancel
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</template>

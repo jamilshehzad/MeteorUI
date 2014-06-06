@@ -1,0 +1,146 @@
+<template name="PersonShares">
+	{{#if listMode}} 
+		{{> PersonSharesView}} 
+	{{/if}}
+
+	{{#if insertMode}} 
+		{{> PersonSharesForm}}
+	{{/if}}
+</template>
+
+<template name="PersonSharesView">
+	<div id="dataview">
+		<h2 id="page_title">Company shares</h2>
+		<form id="dataview-controls" class="form-inline">
+			{{#if isAdmin}}
+			<div id="dataview-controls-insert" class="form-group">
+				<button type="submit" id="dataview-insert-button" class="btn btn-success">
+					<span class="fa fa-plus">
+					</span>
+					Add new
+				</button>
+			</div>
+			{{/if}}
+			<div id="dataview-controls-search" class="form-group">
+				<label class="sr-only" for="search">
+					Search
+				</label>
+				<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="" autofocus>
+				<button type="button" id="dataview-search-button" class="btn btn-default">
+					<span class="fa fa-search">
+					</span>
+				</button>
+			</div>
+		</form>
+		<div id="dataview-data">
+			{{> PersonSharesViewData}}
+		</div>
+	</div>
+</template>
+
+<template name="PersonSharesViewData">
+	<table id="dataview-table" class="table table-hover">
+		<thead id="dataview-data-header">
+			{{> PersonSharesViewDataHeader}}
+		</thead>
+		<tbody id="dataview-data-items">
+			{{#each personShares}} {{> PersonSharesViewDataItems}} {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="PersonSharesViewDataHeader">
+	<tr id="dataview-data-header-row">
+		<th>
+			Company Name
+		</th>
+		<th>
+			Address
+		</th>
+		<th>
+			Share %
+		</th>
+		<th>
+			Since
+		</th>
+		<th>
+			Status
+		</th>
+		<th>
+			&nbsp;
+		</th>
+	</tr>
+</template>
+
+<template name="PersonSharesViewDataItems">
+	<tr id="dataview-data-items-row">
+		<td>
+			{{name}}
+		</td>
+		<td>
+			{{address}}
+		</td>
+		<td>
+			{{share}}
+		</td>
+		<td>
+			{{since}}
+		</td>
+		<td>
+			{{status}}
+		</td>
+		<td class="td-icon">
+			{{#if isAdmin}}
+				<span class="fa fa-trash-o delete-button" title="Delete"></span>
+			{{/if}}
+		</td>
+	</tr>
+</template>
+
+<template name="PersonSharesForm">
+	<div class="row">
+		<div class="col-md-6">
+
+			<h2 id="page_title">Add Company Share</h2>
+			<form id="form" role="form">
+				<div class="form-group">
+					<label for="name" class="control-label">
+						Company Name
+					</label>
+					<select name="companyId" class="form-control" autofocus>
+						{{#each companyList}}
+							<option value="{{_id}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="share" class="control-label">
+						Share %
+					</label>
+					<input type="text" name="share" value="0" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="since" class="control-label">
+						Since
+					</label>
+					<div class="input-group">
+						<input type="text" name="since" value="" class="form-control datepicker" required>
+						<span class="input-group-btn">
+							<button class="btn btn-default datepicker-button" type="button"><span class="glyphicon glyphicon-calendar"></span></button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Save
+					</button>
+					<button class="btn btn-default" type="button" id="form-button-cancel">
+						Cancel
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</template>

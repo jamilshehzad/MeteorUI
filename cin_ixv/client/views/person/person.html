@@ -1,0 +1,64 @@
+	<template name="Person">
+		<div class="row" id="content">
+			<div class="page-header">
+				<h1>
+					Person: {{name}}
+					<div class="pull-right">
+						{{#if isAdmin}}
+							<button type="button" id="edit-button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+						{{/if}}
+						<button type="button" id="visualize-button" class="btn btn-warning"><span class="glyphicon glyphicon-eye-open"></span> Visualize</button>
+						<a href="{{pathFor 'persons'}}" class="btn btn-default" style="border-color: transparent; color: silver" title="Close"><span class="glyphicon glyphicon-remove"></span></a>
+					</div>
+				</h1>
+			</div>
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-10">
+						<p class="form-control-static">{{name}}</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Birth date</label>
+					<div class="col-sm-10">
+						<p class="form-control-static">{{birthDate}}</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Address</label>
+					<div class="col-sm-10">
+						<p class="form-control-static">{{address}}</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Status</label>
+					<div class="col-sm-10">
+						<p class="form-control-static">{{status}}</p>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="row" id="menu">
+			{{> PersonSubMenu}}
+		</div>
+		<div class="row" id="subcontent">
+			{{> yield region='PersonSubcontent'}}
+		</div>
+	</template>
+
+	<template name="PersonSubMenu">
+		<ul id="menu" class="nav nav-tabs">
+			<li id="menu-item" class="{{menuItemClass 'person.companies'}}">
+				<a href="{{pathFor 'person.companies'}}">
+					Companies
+				</a>
+			</li>
+			<li id="menu-item" class="{{menuItemClass 'person.shares'}}">
+				<a href="{{pathFor 'person.shares'}}">
+					Company shares
+				</a>
+			</li>
+		</ul>
+	</template>
+

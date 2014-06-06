@@ -1,0 +1,139 @@
+	<template name="layout">
+		{{#if currentUser}}	
+		{{> private_layout}}	
+	{{else}}	
+		{{> public_layout}}	
+	{{/if}}
+	</template>
+
+	<template name="public_layout">
+		<div id="wrap">
+			<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">
+								Toggle navigation
+							</span>
+							<span class="icon-bar">
+							</span>
+							<span class="icon-bar">
+							</span>
+							<span class="icon-bar">
+							</span>
+						</button>
+						<a class="navbar-brand" href="#">
+							CIN IXV
+						</a>
+					</div>
+					<div id="menu" class="collapse navbar-collapse">
+						{{> PublicLayoutLeftMenu}}{{> PublicLayoutRightMenu}}
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				{{> yield}}
+			</div>
+		</div>
+		<div id="footer">
+		</div>
+	</template>
+
+	<template name="private_layout">
+		<div id="wrap">
+			<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">
+								Toggle navigation
+							</span>
+							<span class="icon-bar">
+							</span>
+							<span class="icon-bar">
+							</span>
+							<span class="icon-bar">
+							</span>
+						</button>
+						<a class="navbar-brand" href="#">
+							CIN IXV
+						</a>
+					</div>
+					<div id="menu" class="collapse navbar-collapse">
+						{{> PrivateLayoutLeftMenu}}{{> PrivateLayoutRightMenu}}
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				{{> yield}}
+			</div>
+		</div>
+		<div id="footer">
+		</div>
+	</template>
+
+	<template name="PublicLayoutLeftMenu">
+		<ul id="menu" class="nav navbar-nav">
+			<li id="menu-item" class="{{menuItemClass 'home_public'}}">
+				<a href="{{pathFor 'home_public'}}">
+					Home
+				</a>
+			</li>
+			<li id="menu-item" class="{{menuItemClass 'about'}}">
+				<a href="{{pathFor 'about'}}">
+					About
+				</a>
+			</li>
+		</ul>
+	</template>
+
+	<template name="PublicLayoutRightMenu">
+		<ul id="menu" class="nav navbar-nav navbar-right">
+			<li id="menu-item" class="{{menuItemClass 'register'}}">
+				<a href="{{pathFor 'register'}}">
+					Register
+				</a>
+			</li>
+			<li id="menu-item" class="{{menuItemClass 'login'}}">
+				<a href="{{pathFor 'login'}}">
+					Login
+				</a>
+			</li>
+		</ul>
+	</template>
+
+	<template name="PrivateLayoutLeftMenu">
+		<ul id="menu" class="nav navbar-nav">
+			<li id="menu-item" class="{{menuItemClass 'home_private'}}">
+				<a href="{{pathFor 'home_private'}}">
+					Home
+				</a>
+			</li>
+			<li id="menu-item" class="{{menuItemClass 'persons'}}">
+				<a href="{{pathFor 'persons'}}">
+					Persons
+				</a>
+			</li>
+			<li id="menu-item" class="{{menuItemClass 'companies'}}">
+				<a href="{{pathFor 'companies'}}">
+					Companies
+				</a>
+			</li>
+			<li id="menu-item" class="{{menuItemClass 'about'}}">
+				<a href="{{pathFor 'about'}}">
+					About
+				</a>
+			</li>
+		</ul>
+	</template>
+
+	<template name="PrivateLayoutRightMenu">
+		<ul id="menu" class="nav navbar-nav navbar-right">
+			<li id="menu-item" class="{{menuItemClass 'logout'}}">
+				<a href="{{pathFor 'logout'}}">
+					Logout
+				</a>
+			</li>
+		</ul>
+	</template>
+
