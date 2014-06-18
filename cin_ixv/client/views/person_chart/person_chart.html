@@ -8,9 +8,95 @@
 				</div>
 			</h1>
 		</div>
-		<div id="vlx-viewer">
-			<applet id="VLVChart" name="VLVChart" archive="/i2Viewer.jar" code="com.VDK.viewer.Chart.class"></applet>
-		</div>
+		<!-- <div id="vlx-viewer">
+			<applet  style="z-index: -1" id="VLVChart" name="VLVChart" archive="/i2Viewer.jar" code="com.VDK.viewer.Chart.class"></applet>
+		</div> -->
+		<table width="100%"   style="z-index: -1" height="83%" cellspacing="0" cellpadding="0" border="0" id="vlx-viewer" bgcolor="#f0f0f0">
+			<tr height="100%">
+				<td id="Applet" width="100%" valign="top">
+					<applet id="VLVChart" height="97%" archive="/i2Viewer.jar" width="100%" align=top code=com.VDK.viewer.Chart.class name=VLVChart>
+						<!-- Modified Parameters -->
+						<param name="background-image" value="images/watermark.jpg"/>
+						<param name="border-color" value="#10295A"/>
+						<param name="button-timebar" value="true"/>
+						<param name="encode-output" value="false"/>
+						<param name="initial-waiting-message" value="Loading visualization... Please wait."/>
+						<param name="layout-manager" value="GroupLayout"/>
+						<param name="page-background-color" value="#f0f0f0"/>
+						<param name="single-right-click" value="true"/>
+						<param name="target-separation" value="175"/>
+						<param name="timebar-timezone" value="(GMT-05:00) Eastern Time (N America)"/>
+						<!-- Default Parameters -->
+						<param name="animate-layout" value="true"/>
+						<param name="animate-zoom" value="true"/>
+						<param name="background-color" value="#ffffff"/>
+						<param name="background-image-stretch" value="true"/>
+						<param name="button-delete" value="true"/>
+						<param name="button-find" value="true"/>
+						<param name="button-help" value="true"/>
+						<param name="button-key-entity-emphasis" value="true"/>
+						<param name="button-panning" value="true"/>
+						<param name="button-reorganize" value="true"/>
+						<param name="button-select-all" value="true"/>
+						<param name="button-undelete" value="true"/>
+						<param name="button-zoom-actual" value="false"/>
+						<param name="button-zoom-area" value="true"/>
+						<param name="button-zoom-fit" value="true"/>
+						<param name="button-zoom-in" value="false"/>
+						<param name="button-zoom-out" value="false"/>
+						<param name="button-zoom-selection" value="true"/>
+						<param name="default-tooltip" value="true"/>
+						<param name="double-click-centering" value="true"/>
+						<param name="filter-mode" value="conceal"/>
+						<param name="key-delete" value="true"/>
+						<param name="label-truncate-length" value="25"/>
+						<param name="override-clicks" value="false"/>
+						<param name="override-keypress" value="false"/>
+						<param name="raise-events" value="true"/>
+						<param name="rounded-corners" value="true"/>
+						<param name="select-on-expand" value="true"/>
+						<param name="select-on-merge" value="true"/>
+						<param name="service-identifier" value=""/>
+						<param name="show-labels-dragging" value="true"/>
+						<param name="tag-line-text" value="Do more with this chart"/>
+						<param name="toolbar-border-color" value="#241A1A"/>
+						<param name="toolbar-color" value="#F0F0F0"/>
+						<param name="tooltip-delay" value="200"/>
+						<param name="undelete-on-import" value="true"/>
+						<param name="vlx-file" value=""/>
+						<param name="zoom-slider" value="true"/>																																																						   
+					</applet>
+				</td>
+				<td valign="top">
+					<table border="0" height="100%" bgcolor="#f0f0f0" cellpadding="0" cellspacing="2" id="tblExpandBar">
+						<tbody>
+							<tr class="clientRow">
+								<!-- <td onclick="FilterClick(this,0);" onMouseDown="EDown(this)" onMouseUp="ENorm(this)"
+									onMouseOver="EUp(this)" onMouseOut="ENorm(this)" class="selected filterButton"><a href="javascript:void(0)" class ="firstFilter" onclick="NS4FilterClick(this,0);"><img src="/VLImages/gifs/new/person.png" width="22" height="22" alt="Male" border="0"></a></td> -->
+								<td class="selected filterButton"><a href="javascript:void(0)" class ="firstFilter"><img src="/VLImages/gifs/new/person.png" width="22" height="22" alt="Male" border="0"></a></td>	
+							</tr>
+							<tr>
+								<!--<td onclick="FilterClick(this,1);" onMouseDown="EDown(this)" onMouseUp="ENorm(this)"
+									onMouseOver="EUp(this)" onMouseOut="ENorm(this)" class="selected filterButton"><a href="javascript:void(0)" onclick="NS4FilterClick(this,1);"><img src="/VLImages/gifs/new/organ.png" width="22" height="22" alt="Company" border="0"></a></td>-->
+								<td class="selected filterButton"><a href="javascript:void(0)" class="secondFilter"><img src="/VLImages/gifs/new/organ.png" width="22" height="22" alt="Company" border="0"></a></td>
+							</tr>
+							<tr height="100%">
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table width="97%" bgcolor="#f0f0f0" cellspacing="2" border="0">
+			<tr>
+				<td class="footertext"> Function links:</td>
+				<td title="Click to show/hide functions" class="selected filterButton" onclick="LinkFilterClick(this,0)" onMouseDown="EDown(this)" onMouseUp="ENorm(this)" onMouseOver="EUp(this)" onMouseOut="ENorm(this)"><div style="WIDTH:100%;CURSOR:hand;HEIGHT:60%"><hr style="BORDER-RIGHT:#0080FF 0px solid;BORDER-TOP:#0080FF 0px solid;BORDER-LEFT:red 0px solid;WIDTH:40px;COLOR:#0080FF;BORDER-BOTTOM:#0080FF 0px solid;HEIGHT:2px;BACKGROUND-COLOR:#0080FF"></div></td>
+				<td class="footertext"> Shareholder links:</td>
+				<td title="Click to show/hide shareholders" class="selected filterButton" onclick="LinkFilterClick(this,1)" onMouseDown="EDown(this)" onMouseUp="ENorm(this)" onMouseOver="EUp(this)" onMouseOut="ENorm(this)"><div style="WIDTH:100%;CURSOR:hand;HEIGHT:60%"><hr style="BORDER-RIGHT:#800000 0px solid;BORDER-TOP:#800000 0px solid;BORDER-LEFT:#800000 0px solid;WIDTH:40px;COLOR:#800000;BORDER-BOTTOM:#800000 0px solid;HEIGHT:2px;BACKGROUND-COLOR:#800000"></div></td>
+				
+			</tr>
+		</table>
 	</div>
 
 	<div id="example-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
