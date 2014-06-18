@@ -36,7 +36,7 @@ VLXVisualizer = function(cb)
 	var EVENT_TOOLBAR_COMMAND		= 26;
 
 	// VLXViewer applet handle
-	var objChart = null;
+	objChart = null;
 
 	// used for context menu: id of last clicked item
 	var lastClickedOnID = "";
@@ -209,5 +209,6 @@ VLXVisualizer = function(cb)
 		}
 		window.setTimeout(PollEvent, 200); //no event found so try again in 1/5 sec
 	}
-	waitViewerToLoad();
+	waitViewerToLoad();	
+	
 }
