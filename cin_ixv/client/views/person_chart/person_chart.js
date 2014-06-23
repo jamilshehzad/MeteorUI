@@ -16,6 +16,14 @@ Template.PersonChart.events({
 
 "click .secondFilter": function (event) {
 	 NS4FilterClick(this,1)
+ },
+
+"click .functionLink": function (event) {
+	 LinkFilterClick(this,0)
+ },
+
+"click .shareholderLink": function (event) {
+	 LinkFilterClick(this,1)
  }
 });
 
@@ -103,11 +111,41 @@ var NS4FilterClick = function(objTD, id) {
 		//if (!netscape4) return;
 		FilterClick(objTD, id);
 	}
+
+var LinkFilterClick = function(objTD, id) 
+{
+
+	if(objChart==null)
+		return;
+
+	objChart.showWaiting(true);
+	
+	//Perform Filter Button Filtering (unless disabled)
+	
+	var catType = arrTypeFuncNames[id];
+//alert(catType);
+	ShowSelectState(objTD, objChart.isFiltered(catType)); //Indicate state on Filter Button
+	//objChart.filterType(catType, !objChart.isFiltered(catType));
+	
+
+	var strKey = objChart.createConnectedByFilter(catType, "");
+	objChart.filter(strKey, !objChart.isFilterOn(strKey));
+
+	
+	objChart.reorganize();
+	objChart.showWaiting(false);
+}
 //This array holds the values of the VLVF Property "EntityType" which must be on each end, to indicate
 //which filter button it responds to.
 var arrTypeNames = new Array(
     "Person",
     "Company"
     );
+
+var arrTypeFuncNames = new Array(
+	    "Function",
+	    "Has Shares"
+	    );
+
 
 
